@@ -18,7 +18,7 @@ class Clipboard:
             return string
 
     @staticmethod
-    def clipboard_set(string: str) -> None:
+    def clipboard_set(string: str):
         """Set the contents of the system's clipboard."""
         pyperclip.copy(string)
 
@@ -26,18 +26,16 @@ class Clipboard:
         """Continuously check for changes in the clipboard and return them when they occur."""
         print("Clipboard monitoring started")
 
-        recent_content = Clipboard.process_chinese(self.clipboard_get())
+        recent_content = Clipboard.process_chinese(Clipboard.clipboard_get())
         while True:
-            new_content = Clipboard.process_chinese(self.clipboard_get())
+            new_content = Clipboard.process_chinese(Clipboard.clipboard_get())
             if new_content != recent_content:
                 recent_content = new_content
-                self.clipboard_set(recent_content)
+                Clipboard.clipboard_set(recent_content)
 
-            """Check every 1ms"""
             time.sleep(0.1)
 
 
 if __name__ == "__main__":
     cb = Clipboard()
     cb.main()
-
