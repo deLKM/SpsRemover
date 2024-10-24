@@ -1,2 +1,4 @@
 # SpsRemover
-A simple script which removes spaces in the clipboard.
+Use python and pyperclip to monitor the content of the clipboard.
+
+If there's Chinese in it, this script will remove all spaces in the content.
